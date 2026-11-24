@@ -29,7 +29,7 @@
 
 ## Claude가 할 일
 
-- [ ] Mac 스크린샷 제작: 2880×1800, ko·en, 가상 네트워크 이름만 사용 → `appstore/screenshots/1.0/{ko,en-US}/`
+- [x] Mac 스크린샷 제작: 2880×1800, ko·en, 가상 네트워크 이름만 사용 → `appstore/screenshots/1.0/{ko,en-US}/`
   - App Store판에서 꺼진 기능(Instant Hotspot, macOS 암호 가져오기)이 화면에 나오지 않게 한다
   - 촬영 전 `~/Library/Preferences/com.zzaisang.NetKeeper.plist` 백업, 끝나면 복원 후 확인
 - [ ] `/appstore-upload` — 빌드 업로드
