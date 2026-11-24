@@ -100,3 +100,6 @@ scripts/appstore-upload.sh            # 처음이거나 서명이 의심되면 �
 - 빌드 번호를 올리지 않고 업로드
 - .p8 내용 읽기·출력·커밋, JWT 출력, Apple ID 비밀번호 요구
 - `--export` 로 만든 `.pkg` 를 다른 경로로 수동 업로드
+- 아카이브 안의 샌드박스 앱(`build/NetKeeper.xcarchive/.../NetKeeper.app`)을 이 Mac 에서 실행. 같은 번들 ID 의
+  샌드박스 앱이 처음 실행되면 macOS 가 기존 설정(`~/Library/Preferences/com.zzaisang.NetKeeper.plist`)을 앱 컨테이너로
+  옮겨, 일반 빌드의 우선순위 목록이 사라진다. 샌드박스 동작 확인이 꼭 필요하면 사용자에게 먼저 알리고 설정을 백업한다.

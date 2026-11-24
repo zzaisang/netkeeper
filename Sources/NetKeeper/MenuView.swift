@@ -203,6 +203,7 @@ private struct NetworkRow: View {
                 } else {
                     Text(wakesByInstantHotspot ? "Instant Hotspot" : "범위 밖" as LocalizedStringKey)
                         .font(.caption2).foregroundStyle(.tertiary)
+                        .lineLimit(1).fixedSize()
                 }
                 Image(systemName: "checkmark")
                     .font(.system(size: 11, weight: .bold))
