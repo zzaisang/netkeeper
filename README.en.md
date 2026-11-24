@@ -40,6 +40,14 @@ NetKeeper manages your Wi-Fi networks and iPhone hotspot in one priority list, a
 
 ## Install
 
+### Mac App Store
+
+[Download on the Mac App Store](https://apps.apple.com/app/id6838803591)
+
+Because of App Store sandboxing, the App Store version leaves out two features: waking an idle iPhone through Instant Hotspot, and reusing Wi-Fi passwords saved in macOS. Build from source if you need them.
+
+### Build from source
+
 ```sh
 git clone https://github.com/zzaisang/netkeeper.git
 cd netkeeper

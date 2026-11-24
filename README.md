@@ -40,6 +40,14 @@ Wi-Fi와 iPhone 핫스팟을 하나의 우선순위 목록으로 관리하고, �
 
 ## 설치
 
+### Mac App Store
+
+[Mac App Store에서 받기](https://apps.apple.com/app/id6838803591)
+
+App Store판은 샌드박스 정책 때문에 두 가지 기능이 빠집니다: 대기 중인 iPhone을 깨워 연결하는 Instant Hotspot, macOS에 저장된 Wi-Fi 암호 재사용. 두 기능이 필요하면 소스에서 빌드하세요.
+
+### 소스에서 빌드
+
 ```sh
 git clone https://github.com/zzaisang/netkeeper.git
 cd netkeeper
