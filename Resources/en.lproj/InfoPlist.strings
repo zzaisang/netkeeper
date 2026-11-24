@@ -1,0 +1,2 @@
+"NSLocationUsageDescription" = "Needed to read nearby Wi-Fi names (SSIDs) so NetKeeper can join your preferred networks automatically.";
+"NSLocationWhenInUseUsageDescription" = "Needed to read nearby Wi-Fi names (SSIDs) so NetKeeper can join your preferred networks automatically.";

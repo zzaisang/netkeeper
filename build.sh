@@ -6,9 +6,10 @@ cd "$(dirname "$0")"
 swift build -c release
 APP=build/NetKeeper.app
 rm -rf "$APP"
-mkdir -p "$APP/Contents/MacOS"
+mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources"
 cp .build/release/NetKeeper "$APP/Contents/MacOS/"
 cp Info.plist "$APP/Contents/"
+cp -R Resources/*.lproj "$APP/Contents/Resources/"
 IDENTITY=${CODESIGN_IDENTITY:-$(security find-identity -v -p codesigning | awk -F'"' '/Apple Development/ {print $2; exit}')}
 codesign --force --sign "${IDENTITY:--}" "$APP"
 echo "built: $APP"
