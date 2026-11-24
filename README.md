@@ -2,6 +2,9 @@
 
 [English](README.en.md)
 
+[![Sponsor on GitHub](https://img.shields.io/badge/Sponsor-%E2%9D%A4-db61a2?logo=github&logoColor=white)](https://github.com/sponsors/zzaisang)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue)](./LICENSE)
+
 **인터넷이 끊기지 않게 지켜 주는 macOS 메뉴바 앱.**
 Wi-Fi와 iPhone 핫스팟(셀룰러)을 하나의 우선순위 목록으로 관리하고, 지금 네트워크에서 인터넷이 안 되면 다음 순위로 자동 전환합니다.
 
@@ -131,3 +134,13 @@ swift test      # 단위 테스트
 - Instant Hotspot은 공개 API가 없습니다. 그래서 Control Center의 접근성 식별자(`wifi-network-<SSID>`)에 의존하며, macOS 업데이트로 이 식별자가 바뀌면 `InstantHotspot.swift`를 고쳐야 합니다.
 - 보안 Wi-Fi는 앱이 암호를 가지고 있어야 연결할 수 있습니다.
 - 연결 기록은 앱을 다시 켜면 초기화됩니다.
+
+## 후원
+
+NetKeeper는 무료이며 MIT 라이선스로 공개됩니다. 도움이 되셨다면 개발을 후원해 주세요.
+
+[![Sponsor on GitHub](https://img.shields.io/badge/Sponsor%20on%20GitHub-%E2%9D%A4-db61a2?logo=github&logoColor=white)](https://github.com/sponsors/zzaisang)
+
+## 라이선스
+
+[MIT](./LICENSE)

@@ -2,6 +2,9 @@
 
 [한국어](README.md)
 
+[![Sponsor on GitHub](https://img.shields.io/badge/Sponsor-%E2%9D%A4-db61a2?logo=github&logoColor=white)](https://github.com/sponsors/zzaisang)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue)](./LICENSE)
+
 **A macOS menu bar app that keeps you online.**
 NetKeeper manages Wi-Fi networks and your iPhone hotspot (cellular) in a single priority list, and switches to the next one as soon as the current network loses internet access.
 
@@ -131,3 +134,13 @@ swift test      # unit tests
 - Instant Hotspot has no public API. NetKeeper relies on the Control Center accessibility identifier (`wifi-network-<SSID>`). If a macOS update changes it, `InstantHotspot.swift` needs to be updated.
 - Secured Wi-Fi networks can only be joined when the app has their password.
 - Connection history resets when the app restarts.
+
+## Sponsor
+
+NetKeeper is free and MIT-licensed. If it saves you time, you can support its development:
+
+[![Sponsor on GitHub](https://img.shields.io/badge/Sponsor%20on%20GitHub-%E2%9D%A4-db61a2?logo=github&logoColor=white)](https://github.com/sponsors/zzaisang)
+
+## License
+
+[MIT](./LICENSE)
