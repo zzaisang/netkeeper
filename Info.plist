@@ -12,6 +12,9 @@
     <key>CFBundleVersion</key><string>1</string>
     <key>LSMinimumSystemVersion</key><string>15.0</string>
     <key>LSUIElement</key><true/>
+    <key>CFBundleIconFile</key><string>AppIcon</string>
+    <key>LSApplicationCategoryType</key><string>public.app-category.utilities</string>
+    <key>ITSAppUsesNonExemptEncryption</key><false/>
     <key>NSLocationUsageDescription</key><string>주변 Wi-Fi 이름(SSID)을 확인해 선호 네트워크로 자동 연결하기 위해 필요합니다.</string>
     <key>NSLocationWhenInUseUsageDescription</key><string>주변 Wi-Fi 이름(SSID)을 확인해 선호 네트워크로 자동 연결하기 위해 필요합니다.</string>
 </dict>
