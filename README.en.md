@@ -10,6 +10,12 @@ NetKeeper manages Wi-Fi networks and your iPhone hotspot (cellular) in a single 
 
 It was built for a MacBook that is always on and always on the move, so long-running work such as AI agents, builds and syncs doesn't stop because of a network drop.
 
+## Screenshots
+
+| Menu bar popover | Settings |
+|---|---|
+| <img src="docs/images/popover-en.png" width="300" alt="Menu bar popover: current network, last 60 minutes, priority list"> | <img src="docs/images/settings-en.png" width="420" alt="Settings window: priority list and nearby Wi-Fi"> |
+
 ## Features
 
 - **Priority-based failover**: Wi-Fi and iPhone hotspot share one ordered list. When the internet is actually down, NetKeeper moves to the next network.
