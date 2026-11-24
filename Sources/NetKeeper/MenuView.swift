@@ -201,7 +201,7 @@ private struct NetworkRow: View {
                 if let signal {
                     SignalBars(bars: signal.bars).help("\(signal.rssi) dBm")
                 } else {
-                    Text(ssid == keeper.hotspot ? "Instant Hotspot" : "범위 밖" as LocalizedStringKey)
+                    Text(wakesByInstantHotspot ? "Instant Hotspot" : "범위 밖" as LocalizedStringKey)
                         .font(.caption2).foregroundStyle(.tertiary)
                 }
                 Image(systemName: "checkmark")
@@ -221,9 +221,11 @@ private struct NetworkRow: View {
         }
         .buttonStyle(.plain)
         .onHover { hovering = $0 }
-        .opacity(signal == nil && !isCurrent && ssid != keeper.hotspot ? 0.5 : 1)
+        .opacity(signal == nil && !isCurrent && !wakesByInstantHotspot ? 0.5 : 1)
         .contextMenu { priorityMenu }
     }
+
+    private var wakesByInstantHotspot: Bool { ssid == keeper.hotspot && Distribution.supportsInstantHotspot }
 
     /// 우클릭: 연결 없이 우선순위만 조정
     @ViewBuilder private var priorityMenu: some View {

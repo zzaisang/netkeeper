@@ -245,7 +245,9 @@ final class Keeper: NSObject, ObservableObject, CWEventDelegate {
         guard enabled, !pinned else { return }
         let cooling = Set(coolUntil.filter { $0.value > now }.keys)
         var visible = Set(nearby.map(\.ssid))
-        if !hotspot.isEmpty { visible.insert(hotspot) } // 스캔에 없어도 Instant Hotspot으로 깨울 수 있음
+        if !hotspot.isEmpty, Distribution.supportsInstantHotspot {
+            visible.insert(hotspot) // 스캔에 없어도 Instant Hotspot으로 깨울 수 있음
+        }
         guard case let .connect(target) = decide(
             current: current, online: online, visible: visible, priority: priority, cooling: cooling
         ) else { return }
@@ -266,7 +268,8 @@ final class Keeper: NSObject, ObservableObject, CWEventDelegate {
             strongest[ssid] = max(strongest[ssid] ?? .min, network.rssiValue)
         }
         let profiles = iface.configuration()?.networkProfiles.array as? [CWNetworkProfile] ?? []
-        knownToMac = Set(profiles.compactMap(\.ssid))
+        // 암호를 가져올 수 없는 배포판에서는 "macOS 저장 네트워크" 표시·가져오기를 모두 끈다
+        knownToMac = Distribution.canImportMacPasswords ? Set(profiles.compactMap(\.ssid)) : []
         nearby = strongest.map { Nearby(ssid: $0.key, rssi: $0.value) }.sorted { $0.rssi > $1.rssi }
     }
 
@@ -311,7 +314,9 @@ final class Keeper: NSObject, ObservableObject, CWEventDelegate {
     @discardableResult
     private func join(_ ssid: String, among networks: Set<CWNetwork>, iface: CWInterface) async -> Bool {
         // iPhone 핫스팟은 macOS처럼 Instant Hotspot으로 연결 (암호·비콘 불필요). 안 되면 일반 연결 시도.
-        if ssid == hotspot, await joinInstantHotspot(ssid, iface: iface) { return true }
+        if ssid == hotspot, Distribution.supportsInstantHotspot, await joinInstantHotspot(ssid, iface: iface) {
+            return true
+        }
         guard let network = networks.filter({ $0.ssid == ssid }).max(by: { $0.rssiValue < $1.rssiValue }) else {
             return false
         }
