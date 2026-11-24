@@ -18,7 +18,7 @@
 "%lld분 %lld초" = "%lldm %llds";
 "우선순위" = "Priority";
 "설정에서 선호 네트워크를 추가하세요." = "Add preferred networks in Settings.";
-"셀룰러 미지정 — 우클릭으로 iPhone 핫스팟을 표시하세요." = "No cellular set — right-click your iPhone hotspot to mark it.";
+"iPhone 핫스팟 미지정 — 목록에서 우클릭해 지정하세요." = "No iPhone hotspot set — right-click it in the list to set it.";
 "범위 밖" = "Out of range";
 "새로고침" = "Refresh";
 "설정…" = "Settings…";
@@ -26,15 +26,15 @@
 "맨 위로" = "Move to Top";
 "위로" = "Move Up";
 "아래로" = "Move Down";
-"셀룰러 표시 해제" = "Unmark as Cellular";
-"셀룰러로 표시" = "Mark as Cellular";
+"iPhone 핫스팟 지정 해제" = "Unset as iPhone Hotspot";
+"iPhone 핫스팟으로 지정" = "Set as iPhone Hotspot";
 "셀룰러 (iPhone 핫스팟)" = "Cellular (iPhone hotspot)";
 
 /* 설정 창 */
 "NetKeeper 설정" = "NetKeeper Settings";
 "네트워크" = "Networks";
 "일반" = "General";
-"위에 있을수록 우선 연결합니다. 드래그하거나 항목 선택 후 ⌥↑/⌥↓로 순서를 바꾸세요. iPhone 아이콘은 셀룰러(핫스팟)입니다." = "Networks higher in the list are joined first. Drag, or select one and press ⌥↑/⌥↓ to reorder. The iPhone icon marks cellular (hotspot).";
+"위에 있을수록 우선 연결합니다. 드래그하거나 항목 선택 후 ⌥↑/⌥↓로 순서를 바꾸세요. iPhone 아이콘은 iPhone 핫스팟(셀룰러 데이터)입니다." = "Networks higher in the list are joined first. Drag, or select one and press ⌥↑/⌥↓ to reorder. The iPhone icon marks an iPhone hotspot (cellular data).";
 "암호 저장됨" = "Password saved";
 "연결됨" = "Connected";
 "선호 네트워크 없음 — 아래 주변 Wi-Fi에서 선택해 추가하세요." = "No preferred networks — add one from Nearby Wi-Fi below.";
@@ -51,8 +51,9 @@
 "macOS Wi-Fi 설정 열기" = "Open macOS Wi-Fi Settings";
 "macOS에 저장된 네트워크 — 암호 입력 불필요" = "Saved in macOS — no password needed";
 "목록에 있음" = "In list";
-"셀룰러로 추가" = "Add as Cellular";
-"iPhone 핫스팟으로 표시해 목록 맨 뒤에 추가" = "Mark as iPhone hotspot and add to the end of the list";
+"iPhone 핫스팟으로 추가" = "Add as iPhone Hotspot";
+"iPhone 핫스팟" = "iPhone Hotspot";
+"셀룰러 데이터를 쓰는 iPhone 핫스팟으로 표시해 목록 맨 뒤에 추가" = "Mark as an iPhone hotspot (cellular data) and add to the end of the list";
 "선택" = "Select";
 "검색 결과 없음 — 위치 서비스 권한을 확인하세요." = "No results — check Location Services permission.";
 "macOS 저장 암호 사용 (입력 불필요)" = "Uses password saved in macOS (optional)";

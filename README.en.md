@@ -52,7 +52,7 @@ open /Applications/NetKeeper.app
 
 1. Allow **Location Services** on first launch. NetKeeper needs it to see nearby Wi-Fi names.
 2. Open the menu bar icon → **Settings…** → Networks, and add networks from the Nearby Wi-Fi list.
-3. Click **Add as Cellular** next to your iPhone.
+3. Click **Add as iPhone Hotspot** next to your iPhone. If its name has no "iPhone", add it to the list and turn on the **iPhone Hotspot** toggle.
 4. Set the order by dragging, or with ⌥↑ / ⌥↓.
 5. To use your iPhone hotspot, turn on NetKeeper in System Settings > Privacy & Security > **Accessibility**.
 6. Turn on **Launch at login** in Settings > General.

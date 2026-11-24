@@ -20,7 +20,7 @@ private struct NetworksTab: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("위에 있을수록 우선 연결합니다. 드래그하거나 항목 선택 후 ⌥↑/⌥↓로 순서를 바꾸세요. iPhone 아이콘은 셀룰러(핫스팟)입니다.")
+            Text("위에 있을수록 우선 연결합니다. 드래그하거나 항목 선택 후 ⌥↑/⌥↓로 순서를 바꾸세요. iPhone 아이콘은 iPhone 핫스팟(셀룰러 데이터)입니다.")
                 .font(.callout).foregroundStyle(.secondary)
 
             List(selection: $selection) {
@@ -66,7 +66,7 @@ private struct NetworksTab: View {
                         .keyboardShortcut(.downArrow, modifiers: .option)
                         .disabled(index == keeper.preferred.count - 1)
                         .help("아래로 (⌥↓)")
-                    Toggle("셀룰러", isOn: Binding(get: { keeper.hotspot == ssid },
+                    Toggle("iPhone 핫스팟", isOn: Binding(get: { keeper.hotspot == ssid },
                                                  set: { _ in keeper.toggleCellular(ssid) }))
                         .help("iPhone 핫스팟이면 켜세요. 메뉴바 뱃지가 파랑으로 표시됩니다.")
                     Spacer()
@@ -113,8 +113,11 @@ private struct NetworksTab: View {
                     if keeper.priority.contains(network.ssid) {
                         Text("목록에 있음").font(.caption).foregroundStyle(.secondary)
                     } else {
-                        Button("셀룰러로 추가") { keeper.setHotspot(network.ssid) }
-                            .help("iPhone 핫스팟으로 표시해 목록 맨 뒤에 추가")
+                        // 기본 핫스팟 이름("…의 iPhone", "…'s iPad")에만 보인다. 그 외는 목록에서 토글로 지정.
+                        if network.ssid.range(of: "iPhone|iPad", options: [.regularExpression, .caseInsensitive]) != nil {
+                            Button("iPhone 핫스팟으로 추가") { keeper.setHotspot(network.ssid) }
+                                .help("셀룰러 데이터를 쓰는 iPhone 핫스팟으로 표시해 목록 맨 뒤에 추가")
+                        }
                         Button("선택") { newSSID = network.ssid }
                     }
                 }

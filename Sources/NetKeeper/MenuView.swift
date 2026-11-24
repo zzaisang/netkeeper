@@ -26,7 +26,7 @@ struct MenuView: View {
                     }
                 }
                 if keeper.hotspot.isEmpty {
-                    Text("셀룰러 미지정 — 우클릭으로 iPhone 핫스팟을 표시하세요.")
+                    Text("iPhone 핫스팟 미지정 — 목록에서 우클릭해 지정하세요.")
                         .font(.caption2).foregroundStyle(.secondary)
                 }
             }
@@ -236,7 +236,7 @@ private struct NetworkRow: View {
         Button("위로") { keeper.move(index, by: -1) }.disabled(index == 0)
         Button("아래로") { keeper.move(index, by: 1) }.disabled(index == last)
         Divider()
-        Button(ssid == keeper.hotspot ? "셀룰러 표시 해제" : "셀룰러로 표시" as LocalizedStringKey) { keeper.toggleCellular(ssid) }
+        Button(ssid == keeper.hotspot ? "iPhone 핫스팟 지정 해제" : "iPhone 핫스팟으로 지정" as LocalizedStringKey) { keeper.toggleCellular(ssid) }
     }
 }
 
