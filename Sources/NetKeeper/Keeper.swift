@@ -61,6 +61,8 @@ final class Keeper: NSObject, ObservableObject, CWEventDelegate {
 
     private static let joinFailCooldown: TimeInterval = 60
     private static let joinGrace: TimeInterval = 20      // 연결 직후 DHCP 등 대기
+    /// iPhone 핫스팟을 못 깨웠을 때 다시 시도하기까지. 이동 중엔 곧 잡히므로 짧게.
+    private static let hotspotRetry: TimeInterval = 30
 
     /// 셀룰러(핫스팟)도 Wi-Fi와 같은 목록에서 순위를 가진다. `hotspot`은 그중 셀룰러 표시일 뿐.
     var priority: [String] { preferred }
@@ -245,7 +247,7 @@ final class Keeper: NSObject, ObservableObject, CWEventDelegate {
         guard enabled, !pinned else { return }
         let cooling = Set(coolUntil.filter { $0.value > now }.keys)
         var visible = Set(nearby.map(\.ssid))
-        if !hotspot.isEmpty, Distribution.supportsInstantHotspot {
+        if !hotspot.isEmpty, Distribution.supportsInstantHotspot, !InstantHotspot.blockedBySystem {
             visible.insert(hotspot) // 스캔에 없어도 Instant Hotspot으로 깨울 수 있음
         }
         guard case let .connect(target) = decide(
@@ -314,7 +316,9 @@ final class Keeper: NSObject, ObservableObject, CWEventDelegate {
     @discardableResult
     private func join(_ ssid: String, among networks: Set<CWNetwork>, iface: CWInterface) async -> Bool {
         // iPhone 핫스팟은 macOS처럼 Instant Hotspot으로 연결 (암호·비콘 불필요). 안 되면 일반 연결 시도.
-        if ssid == hotspot, Distribution.supportsInstantHotspot, await joinInstantHotspot(ssid, iface: iface) {
+        // 화면 잠금·뚜껑 닫힘 중엔 macOS가 Instant Hotspot을 막으므로 바로 일반 연결(저장된 암호)로 간다.
+        if ssid == hotspot, Distribution.supportsInstantHotspot, !InstantHotspot.blockedBySystem,
+           await joinInstantHotspot(ssid, iface: iface) {
             return true
         }
         guard let network = networks.filter({ $0.ssid == ssid }).max(by: { $0.rssiValue < $1.rssiValue }) else {
@@ -350,7 +354,7 @@ final class Keeper: NSObject, ObservableObject, CWEventDelegate {
         }
         status = String(localized: "\(ssid) Instant Hotspot 연결 중…")
         guard await Task.detached(operation: { InstantHotspot.press(ssid) }).value else {
-            coolUntil[ssid] = Date() + deadCooldown
+            coolUntil[ssid] = Date() + Self.hotspotRetry
             status = String(localized: "\(ssid) 근처에 없음")
             return false
         }
@@ -359,7 +363,7 @@ final class Keeper: NSObject, ObservableObject, CWEventDelegate {
         }
         current = iface.ssid()
         guard current == ssid else {
-            coolUntil[ssid] = Date() + Self.joinFailCooldown
+            coolUntil[ssid] = Date() + Self.hotspotRetry
             status = String(localized: "\(ssid) Instant Hotspot 연결 실패")
             return false
         }

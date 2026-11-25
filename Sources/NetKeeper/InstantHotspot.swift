@@ -9,6 +9,13 @@ enum InstantHotspot {
         AXIsProcessTrustedWithOptions([kAXTrustedCheckOptionPrompt.takeUnretainedValue() as String: true] as CFDictionary)
     }
 
+    /// 화면이 잠겼거나 디스플레이가 꺼졌으면(뚜껑 닫힘 포함) macOS가 Instant Hotspot을 거부한다
+    /// (airportd: "Screen is locked or Device sleeping"). 이때는 메뉴에 iPhone 항목도 나오지 않는다.
+    static var blockedBySystem: Bool {
+        let session = CGSessionCopyCurrentDictionary() as? [String: Any]
+        return session?["CGSSessionScreenIsLocked"] as? Bool == true || CGDisplayIsAsleep(CGMainDisplayID()) != 0
+    }
+
     /// iPhone 항목을 찾아 눌렀으면 true. 근처에 iPhone이 없으면 메뉴에 항목이 없어 false.
     static func press(_ ssid: String) -> Bool {
         guard let pid = NSRunningApplication
