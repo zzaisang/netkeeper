@@ -4,7 +4,8 @@
 
 ## 결정 사항
 
-- 1.0 은 **무료**, 175개 국가·지역 전체로 출시한다.
+- 1.0 은 **무료**, 중국 본토를 뺀 174개 국가·지역에 출시한다.
+  - 중국 본토는 신규 앱 제출 시 Security Assessment 보고서와 AIGC 서비스 신고를 요구해 제외했다.
 - 유료 앱 계약(Paid Apps Agreement)이 활성화되면 **전 세계 US $0.99** (한국 등은 자동 환산)로 바꾼다.
   - 무료일 때 받은 사용자에게는 나중에 유료로 바꿔도 요금이 부과되지 않는다.
 - 영어 스토어 이름은 `NetKeeper` 가 다른 계정에서 사용 중이라 **NetKeeper: Auto Wi-Fi Switch** 로 등록했다.
@@ -18,7 +19,8 @@
 - [x] App Information (ko·en): 이름, 부제, Privacy Policy URL
 - [x] 버전 1.0 (ko·en): Description, Keywords, Promotional Text, Support URL
 - [x] App Review: 심사 메모, 연락처(현소 앱과 동일)
-- [x] Pricing: 무료 (기준 국가 미국) / Availability: 175개 국가·지역 전체
+- [x] Pricing: 무료 (기준 국가 미국) / Availability: 174개 국가·지역(중국 본토 제외)
+- [x] Copyright: `2026 zzaisang`
 
 ## 사용자가 할 일 (웹)
 
@@ -33,7 +35,7 @@
   - App Store판에서 꺼진 기능(Instant Hotspot, macOS 암호 가져오기)이 화면에 나오지 않게 한다
   - 촬영 전 `~/Library/Preferences/com.zzaisang.NetKeeper.plist` 백업, 끝나면 복원 후 확인
 - [x] `/appstore-upload` — 빌드 업로드
-- [ ] `/asc-submit` — 스크린샷 업로드, 빌드 연결, 요약 확인 후 **사용자 승인을 받고** 심사 제출
+- [x] `/asc-submit` — 2026-11-25 15:47 (KST) 심사 제출, `WAITING_FOR_REVIEW`
 - [ ] 승인 후 사용자가 **Release this version** 을 눌러 출시 (MANUAL)
 
 ## 출시 이후
