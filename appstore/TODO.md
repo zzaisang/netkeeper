@@ -35,7 +35,8 @@
   - App Store판에서 꺼진 기능(Instant Hotspot, macOS 암호 가져오기)이 화면에 나오지 않게 한다
   - 촬영 전 `~/Library/Preferences/com.zzaisang.NetKeeper.plist` 백업, 끝나면 복원 후 확인
 - [x] `/appstore-upload` — 빌드 업로드
-- [x] `/asc-submit` — 2026-11-26 08:37 (KST) 빌드 3 으로 재제출, `WAITING_FOR_REVIEW`
+- [ ] `/asc-submit` — **보류**: 사업자 전환을 먼저 끝낸 뒤 다시 제출한다
+  - 빌드 3 연결된 상태로 제출 취소(2026-11-26), 버전 상태 `DEVELOPER_REJECTED`
   - 빌드 2 제출(11-25)은 화면 잠금 중 핫스팟 연결 수정을 넣으려고 취소했다
 - [ ] 승인 후 사용자가 **Release this version** 을 눌러 출시 (MANUAL)
 
