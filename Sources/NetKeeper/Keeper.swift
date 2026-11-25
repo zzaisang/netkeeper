@@ -220,6 +220,8 @@ final class Keeper: NSObject, ObservableObject, CWEventDelegate {
 
         let now = Date()
         current = iface.ssid()
+        // macOS가 직접 갈아탄 경우에도 주소를 받기 전에 불통으로 판정하지 않게 대기 시간을 둔다
+        if let current, current != lastSSID { graceUntil = max(graceUntil, now + Self.joinGrace) }
         online = await Self.probe()
         recordHealth(now: now)
         recordHistory(now: now)
